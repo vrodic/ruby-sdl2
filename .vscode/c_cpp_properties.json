@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-clang-x64",
+            "compilerArgs": [
+                "`ruby -rrbconfig -e 'puts RbConfig::CONFIG[\"CPPFLAGS\"]'` -I. -I/usr/include -I/usr/include/SDL2"
+            ]
+        }
+    ],
+    "version": 4
+}

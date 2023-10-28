@@ -65,14 +65,14 @@ const char* INT2BOOLCSTR(int n)
 }
 
 typedef enum {
-    NOT_INITIALIZED, INITIALIZDED, FINALIZED
+    NOT_INITIALIZED, INITIALIZED, FINALIZED
 } sdl2_state;
 
 static sdl2_state state = NOT_INITIALIZED;
 
 static void quit(VALUE unused)
 {
-    if (state != INITIALIZDED)
+    if (state != INITIALIZED)
         return;
     
 #ifdef HAVE_SDL_IMAGE_H
@@ -117,13 +117,13 @@ static VALUE SDL2_s_init(VALUE self, VALUE flags)
 {
     SDL_SetMainReady();
     HANDLE_ERROR(SDL_Init(NUM2UINT(flags)));
-    state = INITIALIZDED;
+    state = INITIALIZED;
     return Qnil;
 }
 
 int rubysdl2_is_active(void)
 {
-    return state == INITIALIZDED;
+    return state == INITIALIZED;
 }
 
 static VALUE libsdl_version(void)
